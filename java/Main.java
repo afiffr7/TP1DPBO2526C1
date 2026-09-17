@@ -7,7 +7,7 @@ class Main
 {
     public static void main(String args[])
     {
-        List<Bioskop> listBioskop = new LinkedList<>();
+        List<Studio> listStudio = new LinkedList<>();
         boolean crud = true;
         while(crud)
         {
@@ -23,7 +23,7 @@ class Main
             menu = input.nextInt();
             if(menu == 1)
             {
-                for(Bioskop data : listBioskop)
+                for(Studio data : listStudio)
                 {
                     System.out.printf("%s | %s | %s | %d\n", data.getKode(), data.getLokasi(), data.getJaringan(), data.getKapasitas());
                 }
@@ -44,8 +44,8 @@ class Main
                 System.out.print("kapasitas: ");
                 kapasitas = input.nextInt();
 
-                Bioskop newBioskop = new Bioskop(kode, lokasi, jaringan, kapasitas);
-                listBioskop.add(newBioskop);
+                Studio newStudio = new Studio(kode, lokasi, jaringan, kapasitas);
+                listStudio.add(newStudio);
             }
             else if(menu == 3)
             {

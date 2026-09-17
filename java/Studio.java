@@ -1,13 +1,13 @@
 package java;
 
-class Bioskop
+class Studio
 {
     private String kode;
     private String lokasi;
     private String jaringan;
     private int kapasitas;
 
-    public Bioskop(String kode, String lokasi, String jaringan, int kapasitas)
+    public Studio(String kode, String lokasi, String jaringan, int kapasitas)
     {
         this.kode = kode;
         this.lokasi = lokasi;
