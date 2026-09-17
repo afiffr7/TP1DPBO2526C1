@@ -2,15 +2,24 @@
 
 int main()
 {
-    list<Bioskop*> dataBioskop;
+    list<Studio*> dataStudio;
     int menu = 0;
     do
     {
         if(menu == 1)
         {
+            int nomor = 1;
+            for(Studio* it : dataStudio)
+            {
+                cout<<endl<<nomor<<". "<<it->getKode()<<" | "<<it->getLokasi()<<" | "<<it->getJaringan()<<" | "<<it->getKapasitas();
+                nomor++;
+            }
+        }
+        else if(menu == 2)
+        {
             string kode, lokasi, jaringan;
             int kapasitas;
-            cout<<"masukkan kode (string), lokasi (string), jaringan (string), dan kapasitas (int) bioskop\nkode: ";
+            cout<<"masukkan kode (string), lokasi (string), jaringan (string), dan kapasitas (int) Studio\nkode: ";
             cin>>kode;
             cout<<"lokasi: ";
             cin>>lokasi;
@@ -19,14 +28,14 @@ int main()
             cout<<"kapasitas: ";
             cin>>kapasitas;
 
-            Bioskop* bioskopBaru = new Bioskop(kode, lokasi, jaringan, kapasitas);
-            dataBioskop.push_back(bioskopBaru);
+            Studio* StudioBaru = new Studio(kode, lokasi, jaringan, kapasitas);
+            dataStudio.push_back(StudioBaru);
         }
-        else if(menu == 2)
+        else if(menu == 4)
         {
             string kode, lokasi, jaringan;
             int kapasitas;
-            cout<<"masukkan kode bioskop yang ingin diedit: ";
+            cout<<"masukkan kode Studio yang ingin diedit: ";
             cin>>kode;
             cout<<"lokasi: ";
             cin>>lokasi;
@@ -36,7 +45,7 @@ int main()
             cin>>kapasitas;
 
             bool flag = false;
-            for(auto it = dataBioskop.begin(); it != dataBioskop.end() && !flag; ++it)
+            for(auto it = dataStudio.begin(); it != dataStudio.end() && !flag; ++it)
             {
                 if((*it)->getKode() == kode)
                 {
@@ -47,30 +56,24 @@ int main()
                 }
             }
         }
-        else if(menu == 3)
+        else if(menu == 5)
         {
             string kode;
-            cout<<"masukkan kode bioskop yang ingin dihapus: ";
+            cout<<"masukkan kode Studio yang ingin dihapus: ";
             cin>>kode;
 
             bool flag = false;
-            for(auto it = dataBioskop.begin(); it != dataBioskop.end() && !flag; ++it)
+            for(auto it = dataStudio.begin(); it != dataStudio.end() && !flag; ++it)
             {
                 if((*it)->getKode() == kode)
                 {
-                    dataBioskop.erase(it);
+                    dataStudio.erase(it);
                     flag = true;
                 }
             }
         }
 
-        int nomor = 1;
-        for(Bioskop* it : dataBioskop)
-        {
-            cout<<endl<<nomor<<". "<<it->getKode()<<" | "<<it->getLokasi()<<" | "<<it->getJaringan()<<" | "<<it->getKapasitas();
-            nomor++;
-        }
-        cout<<"\npilih menu:\n1. Tambahkan data\n2. Edit data\n3. Hapus data\n";
+        cout<<"\npilih menu:\n1. Tampilkan data\n2. Tambahkan data\n3. Cari data\n4. Edit data\n5. Hapus data\n";
     }
     while(cin>>menu);
 

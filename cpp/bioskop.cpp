@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Bioskop
+class Studio
 {
     // mendefinisikan private atribut
     private:
@@ -12,10 +12,10 @@ class Bioskop
 
     // mendefinisikan public constructor, method, dan destructor
     public:
-    Bioskop(){}; // constructor kosong
+    Studio(){}; // constructor kosong
 
     // constructor dengan parameter
-    Bioskop(string kode, string lokasi, string jaringan, int kapasitas)
+    Studio(string kode, string lokasi, string jaringan, int kapasitas)
     {
         this->kode = kode;
         this->lokasi = lokasi;
@@ -62,5 +62,5 @@ class Bioskop
     // other method
 
     // destructor
-    ~Bioskop(){};
+    ~Studio(){};
 };
