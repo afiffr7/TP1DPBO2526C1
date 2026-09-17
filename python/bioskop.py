@@ -1,4 +1,4 @@
-class Bioskop:
+class Studio:
     __kode = ""
     __lokasi = ""
     __jaringan = ""
