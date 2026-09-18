@@ -49,15 +49,79 @@ class Main
             }
             else if(menu == 3)
             {
-
+                String kode = "";
+                boolean found = false;
+                System.out.print("masukkan kode target: ");
+                kode = input.next();
+                for(Studio data : listStudio)
+                {
+                    if(data.getKode() == kode)
+                    {
+                        System.out.println("data ditemukan!");
+                        System.out.println(data.getKode() + " | " + data.getLokasi() + " | " + data.getJaringan() + " | " + data.getKapasitas());
+                        found = true;
+                    }
+                }
+                if(!found){
+                    System.out.println("data tidak ada!");
+                }
             }
             else if(menu == 4)
             {
-
+                String kode = "";
+                boolean found = false;
+                System.out.print("masukkan kode target: ");
+                kode = input.next();
+                for(Studio data : listStudio)
+                {
+                    if(data.getKode() == kode)
+                    {
+                        System.out.println("data ditemukan!");
+                        String lokasi = input.next();
+                        String jaringan = input.next();
+                        int kapasitas = 0;
+                        boolean capNotInt = true;
+                        while(capNotInt)
+                        {
+                            try
+                            {
+                                kapasitas = input.nextInt();
+                                capNotInt = false;
+                            }
+                            catch(Exception e){}
+                        }
+                        data.setLokasi(lokasi);
+                        data.setJaringan(jaringan);
+                        data.setKapasitas(kapasitas);
+                        found = true;
+                    }
+                }
+                if(!found){
+                    System.out.println("data berhasil diubah!");
+                }
+            }
+            else if(menu == 5)
+            {
+                String kode = "";
+                boolean found = false;
+                System.out.print("masukkan kode target: ");
+                kode = input.next();
+                for(Studio data : listStudio)
+                {
+                    if(data.getKode() == kode)
+                    {
+                        listStudio.remove(data);
+                        System.out.println("data berhasil dihapus!");
+                        found = true;
+                    }
+                }
+                if(!found){
+                    System.out.println("data tidak ada!");
+                }
             }
             else
             {
-
+                System.out.println("menu " + menu + " tidak ada!");
             }
 
             crud = input.nextBoolean();
