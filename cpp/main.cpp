@@ -3,9 +3,13 @@
 int main()
 {
     list<Studio*> dataStudio;
-    int menu = 0;
-    do
+    char makeChanges = 'Y';
+    while(makeChanges == 'Y')
     {
+        int menu = 0;
+        cout<<"\npilih menu:\n1. Tampilkan data\n2. Tambahkan data\n3. Cari data\n4. Edit data\n5. Hapus data\n";
+        cin>>menu;
+
         if(menu == 1)
         {
             int nomor = 1;
@@ -72,10 +76,9 @@ int main()
                 }
             }
         }
-
-        cout<<"\npilih menu:\n1. Tampilkan data\n2. Tambahkan data\n3. Cari data\n4. Edit data\n5. Hapus data\n";
+        cout<<"Apakah ingin melakukan perubahan? (Y/N): ";
+        cin>>makeChanges;
     }
-    while(cin>>menu);
 
     return 0;
 }
