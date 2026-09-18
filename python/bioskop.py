@@ -1,15 +1,18 @@
 class Studio:
+    # mendefinisikan nilai default private attribut
     __kode = ""
     __lokasi = ""
     __jaringan = ""
     __kapasitas = 0
 
+    # constructor dan inisialisasi attribut
     def __init__(self, kode:str, lokasi:str, jaringan:str, kapasitas:int):
         self.__kode = kode
         self.__lokasi = lokasi
         self.__jaringan = jaringan
         self.__kapasitas = kapasitas
 
+    # getter method
     def getKode(self):
         return self.__kode
 
@@ -22,6 +25,7 @@ class Studio:
     def getKapasitas(self):
         return self.__kapasitas
 
+    # setter method
     def setKode(self, kode:str):
         self.__kode = kode
 
