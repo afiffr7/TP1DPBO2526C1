@@ -59,8 +59,6 @@ class Studio
         return kapasitas;
     }
 
-    // other method
-
     // destructor
     ~Studio(){};
 };
