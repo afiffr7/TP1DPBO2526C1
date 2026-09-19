@@ -1,15 +1,18 @@
-package java;
+package Java;
+
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.List;
 
-class Main
+public class Main
 {
     public static void main(String args[])
     {
-        List<Studio> listStudio = new LinkedList<>();
-        boolean crud = true;
-        while(crud)
+        List<Studio> listStudio = new LinkedList<>(); // inisialisasi list of object
+        char makeChanges = 'Y'; // variabel penampung decision
+        Scanner input = new Scanner(System.in); // inisialisasi scanner
+
+        while(makeChanges != 'N')
         {
             System.out.println("pilih menu:");
             System.out.println("1. Tampilkan data");
@@ -18,115 +21,187 @@ class Main
             System.out.println("4. Edit data");
             System.out.println("5. Hapus data");
 
+            // memilih menu
             int menu = 0;
-            Scanner input = new Scanner(System.in);
+            System.out.print("Masukkan menu: ");
             menu = input.nextInt();
-            if(menu == 1)
+
+            if(menu == 1) // menampilkan data
             {
-                for(Studio data : listStudio)
+                if(listStudio.isEmpty()) // alert jika list masih kosong
                 {
-                    System.out.printf("%s | %s | %s | %d\n", data.getKode(), data.getLokasi(), data.getJaringan(), data.getKapasitas());
+                    System.out.println("List data Studio kosong!");
                 }
+                else
+                {
+                    System.out.println("List data Studio: ");
+                    int num = 1;
+                    for(Studio data : listStudio) // menggunakan foreach untuk output data Studio
+                    {
+                        System.out.printf("%d. %s | %s | %s | %d\n", num, data.getKode(), data.getLokasi(), data.getJaringan(), data.getKapasitas());
+                        num++;
+                    }
+                }
+                
             }
-            else if(menu == 2)
+            else if(menu == 2) // menambahkan data
             {
+                // deklarasi nilai dari attribut data baru
                 String kode = "";
                 String lokasi = "";
                 String jaringan = "";
                 int kapasitas = 0;
-                System.out.println("Masukkan data: ");
-                System.out.print("kode: ");
-                kode = input.next();
-                System.out.print("lokasi: ");
-                lokasi = input.next();
-                System.out.print("jaringan: ");
-                jaringan = input.next();
-                System.out.print("kapasitas: ");
-                kapasitas = input.nextInt();
 
-                Studio newStudio = new Studio(kode, lokasi, jaringan, kapasitas);
-                listStudio.add(newStudio);
-            }
-            else if(menu == 3)
-            {
-                String kode = "";
-                boolean found = false;
-                System.out.print("masukkan kode target: ");
+                System.out.println("Masukkan data: ");
+                System.out.print("kode (String): ");
                 kode = input.next();
-                for(Studio data : listStudio)
+
+                boolean found = true;
+                while(found) // cek apakah kode sudah digunakan di list (kode harus unik)
                 {
-                    if(data.getKode() == kode)
+                    found = false;
+                    for(Studio data : listStudio)
+                    {
+                        if(data.getKode().equals(kode))
+                        {
+                            found = true;
+                        }
+                    }
+                    if(found) // jika kode terdeteksi sudah digunakan, input ulang dan cek kembali
+                    {
+                        System.out.printf("kode %s sudah ada!\n", kode);
+                        System.out.print("kode (String): ");
+                        kode = input.next();
+                    }
+                }
+
+                System.out.print("lokasi (String): ");
+                lokasi = input.next();
+                System.out.print("jaringan (String): ");
+                jaringan = input.next();
+                System.out.print("kapasitas (int): ");
+
+                boolean capNotInt = true;
+                while(capNotInt) // perulangan apabila inputan kapasitas tidak bilangan bulat
+                {
+                    try // cek error
+                    {
+                        kapasitas = input.nextInt();
+                        capNotInt = false;
+                    }
+                    catch(Exception e) // jika terdeteksi error, input ulang
+                    {
+                        System.out.println("Kapasitas harus bilangan bulat!");
+                        input.next();
+                        System.out.print("kapasitas baru: ");
+                    }
+                }
+
+                // instansiasi data baru
+                Studio newStudio = new Studio(kode, lokasi, jaringan, kapasitas);
+                listStudio.add(newStudio); // masukkan ke list
+                System.out.println("Data berhasil ditambahkan!");
+            }
+            else if(menu == 3) // mencari data
+            {
+                String kode = ""; // deklarasi kode target
+                System.out.print("masukkan kode target (String): ");
+
+                boolean found = false;
+                kode = input.next();
+                for(Studio data : listStudio) // foreach untuk mencari dengan linear search
+                {
+                    if(data.getKode().equals(kode))
                     {
                         System.out.println("data ditemukan!");
                         System.out.println(data.getKode() + " | " + data.getLokasi() + " | " + data.getJaringan() + " | " + data.getKapasitas());
                         found = true;
                     }
                 }
-                if(!found){
+                if(!found) // alert jika data tidak ditemukan
+                {
                     System.out.println("data tidak ada!");
                 }
             }
-            else if(menu == 4)
+            else if(menu == 4) // mengedit data
             {
-                String kode = "";
+                String kode = ""; // deklarasi kode target
+                System.out.print("masukkan kode target (String): ");
+
                 boolean found = false;
-                System.out.print("masukkan kode target: ");
                 kode = input.next();
-                for(Studio data : listStudio)
+                for(Studio data : listStudio) // cari data
                 {
-                    if(data.getKode() == kode)
+                    if(data.getKode().equals(kode))
                     {
+                        // input nilai baru attribut
                         System.out.println("data ditemukan!");
+                        System.out.print("lokasi baru (String): ");
                         String lokasi = input.next();
+                        System.out.print("jaringan baru (String): ");
                         String jaringan = input.next();
+
                         int kapasitas = 0;
                         boolean capNotInt = true;
-                        while(capNotInt)
+                        System.out.print("kapasitas baru (int): ");
+                        while(capNotInt) // error handling apabila kapasitas bukan bil bulat
                         {
                             try
                             {
                                 kapasitas = input.nextInt();
                                 capNotInt = false;
                             }
-                            catch(Exception e){}
+                            catch(Exception e)
+                            {
+                                System.out.println("Kapasitas harus bilangan bulat!");
+                                input.next();
+                                System.out.print("kapasitas baru (int): ");
+                            }
                         }
+                        // update data
                         data.setLokasi(lokasi);
                         data.setJaringan(jaringan);
                         data.setKapasitas(kapasitas);
                         found = true;
+                        System.out.println("Data berhasil diubah!");
                     }
                 }
-                if(!found){
-                    System.out.println("data berhasil diubah!");
+                if(!found) // alert
+                {
+                    System.out.println("data tidak ada!");
                 }
             }
-            else if(menu == 5)
+            else if(menu == 5) // hapus data
             {
-                String kode = "";
+                String kode = ""; // deklarasi target
+                System.out.print("masukkan kode target (String): ");
+
                 boolean found = false;
-                System.out.print("masukkan kode target: ");
                 kode = input.next();
-                for(Studio data : listStudio)
+                for(Studio data : listStudio) // cari data target
                 {
-                    if(data.getKode() == kode)
+                    if(data.getKode().equals(kode))
                     {
-                        listStudio.remove(data);
+                        listStudio.remove(data); // hapus data dari list
                         System.out.println("data berhasil dihapus!");
                         found = true;
                     }
                 }
-                if(!found){
+                if(!found) // alert
+                {
                     System.out.println("data tidak ada!");
                 }
             }
-            else
+            else // alert menu yang tidak ada
             {
                 System.out.println("menu " + menu + " tidak ada!");
             }
 
-            crud = input.nextBoolean();
-
-            input.close();
+            System.out.print("Ingin membuat perubahan lagi? (Y/N):  ");
+            makeChanges = input.next().charAt(0);
         }
+
+        System.out.println("Program selesai. Data dihapus.");
+        input.close();
     }
 }

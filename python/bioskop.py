@@ -10,7 +10,7 @@ class Studio:
         self.__kode = kode
         self.__lokasi = lokasi
         self.__jaringan = jaringan
-        self.__kapasitas = kapasitas
+        self.__kapasitas = max(kapasitas, 5)
 
     # getter method
     def getKode(self):
@@ -36,4 +36,4 @@ class Studio:
         self.__jaringan = jaringan
 
     def setKapasitas(self, kapasitas:int):
-        self.__kapasitas = kapasitas
+        self.__kapasitas = max(kapasitas, 5)

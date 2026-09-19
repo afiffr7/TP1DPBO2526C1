@@ -4,22 +4,33 @@ from bioskop import Studio
 listStudio = []
 makeChanges = "Y"
 
-while makeChanges == "Y":
+while makeChanges != "N":
     # print deskripsi menu
     print("\npilih menu:\n1. Tampilkan data\n2. Tambahkan data\n3. Cari data\n4. Edit data\n5. Hapus data")
     menu = int(input("masukkan menu: "))    # input pilihan menu
     print("")
 
     if menu == 1:
+        num = 1
         if listStudio:     # cek apakah list berisi
             for stud in listStudio:     # foreach list
-                print(f"{stud.getKode()} | {stud.getLokasi()} | {stud.getJaringan()} | {stud.getKapasitas()}")
+                print(f"{num}. {stud.getKode()} | {stud.getLokasi()} | {stud.getJaringan()} | {stud.getKapasitas()}")
+                num += 1
         else:     # alert jika list kosong
             print("List kosong!")
 
     elif menu == 2:
         # input nilai attribut untuk instance baru
-        kode = input("kode (str): ")
+        found = 1
+        while found :     # cek apakah kode sudah pernah digunakan
+            found = 0
+            kode = input("kode (str): ")
+            for stud in listStudio:     # foreach list linear search
+                if stud.getKode() == kode:
+                    found = 1
+            if found :
+                print("kode sudah digunakan!")
+
         lokasi = input("lokasi (str): ")
         jaringan = input("jaringan (str): ")
 
@@ -45,7 +56,6 @@ while makeChanges == "Y":
                 print("Studio ditemukan!")
                 found = 1
                 print(f"{stud.getKode()} | {stud.getLokasi()} | {stud.getJaringan()} | {stud.getKapasitas()}")
-                break
 
         if found == 0:     # alert jika tidak ditemukan
             print("Studio tidak ada!")
@@ -66,7 +76,6 @@ while makeChanges == "Y":
                 stud.setJaringan(jaringan)
                 stud.setKapasitas(kapasitas)
                 print("data berhasil diperbarui!")
-                break
 
         if found == 0:     # alert jika tidak ditemukan
             print("Studio tidak ada!")
@@ -79,7 +88,6 @@ while makeChanges == "Y":
                 listStudio.remove(stud)     # delete instance
                 found = 1
                 print(f"Studio {stud.getKode()} berhasil dihapus.")
-                break
 
         if found == 0:      # alert jika tidak ditemukan
             print("Studio tidak ada!")
