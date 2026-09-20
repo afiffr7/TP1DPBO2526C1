@@ -1,4 +1,4 @@
-/* --- RESET & BASIC STYLES --- */
+/* basic style */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,7 +18,7 @@ body {
     margin: 0 auto;
 }
 
-/* --- HEADER --- */
+/* header */
 header {
     text-align: center;
     margin-bottom: 25px;
@@ -29,7 +29,7 @@ header h1 {
     font-size: 1.8rem;
 }
 
-/* --- CARD WRAPPER --- */
+/* card wrapper */
 .card {
     background: #fff;
     padding: 25px;
@@ -46,7 +46,7 @@ header h1 {
     padding-bottom: 8px;
 }
 
-/* --- TABLE STYLES --- */
+/* -table */
 .table-container {
     overflow-x: auto;
 }
