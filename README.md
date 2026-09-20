@@ -3,6 +3,15 @@
 ## Janji
 **Saya Afif Fadilah Rahman dengan NIM 2508287 mengerjakan TP 1 dalam mata kuliah Desain Pemrograman Berbasis Objek untuk keberkahan-Nya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin**
 
+## Desain program
+
+Program ini memiliki class berupa Studio yaitu class sebuah ruangan bioskop yang didalamnya berisi 4 attribut:
+1. Kode (string) -> primary key dari data
+2. Lokasi (string) -> lokasi ruangan bioskop berada. Kota/Mall
+3. Jaringan (string) -> jaringan bioskop (CGV, XXI, Cinepolis, dsb.)
+4. Kapasitas (int) -> kapasitas kursi ruangan bioskop
+Masing-masing attribut memiliki method getter dan setternya.
+
 ## Alur Program
 
 1. Program menggunakan perulangan while untuk mengatasi perubahan berkali-kali
