@@ -70,7 +70,16 @@ while makeChanges != "N":
                 # input nilai attribut baru
                 lokasi = input("lokasi baru: ")
                 jaringan = input("jaringan baru: ")
-                kapasitas = int(input("kapasitas baru: "))
+
+                # error handling apabila inputan kapasitas bukan bilangan bulat
+                capNotInt = 1
+                while capNotInt == 1:
+                    try:
+                        kapasitas = int(input("kapasitas baru: "))
+                        capNotInt = 0
+                    except Exception:
+                        print("kapasitas harus bilangan bulat!")
+
                 # update instance attribut
                 stud.setLokasi(lokasi)
                 stud.setJaringan(jaringan)
