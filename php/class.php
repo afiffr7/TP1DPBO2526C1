@@ -6,15 +6,17 @@
         private string $kode;
         private string $lokasi;
         private string $jaringan;
+        private string $img = "";
         private int $kapasitas;
 
         // constructor
-        public function __construct(string $kode, string $lokasi, string $jaringan, int $kapasitas)
+        public function __construct(string $kode, string $lokasi, string $jaringan, int $kapasitas, string $img)
         {
             $this->kode = $kode;
             $this->lokasi = $lokasi;
             $this->jaringan = $jaringan;
             $this->kapasitas = max($kapasitas, 5);
+            $this->img = $img;
         }
 
         // setter method
@@ -34,6 +36,10 @@
         {
             $this->kapasitas = max($kapasitas, 5);
         }
+        public function setImage(string $img)
+        {
+            $this->$img = $img;
+        }
         
         // getter method
         public function getKode()
@@ -51,6 +57,10 @@
         public function getKapasitas()
         {
             return $this->kapasitas;
+        }
+        public function getImage()
+        {
+            return $this->img;
         }
     }
 ?>

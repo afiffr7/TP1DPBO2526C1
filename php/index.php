@@ -15,7 +15,7 @@
     if(!isset($_SESSION['listStudio'])){
         $_SESSION['listStudio'] = [];
         // initial dummy data
-        $_SESSION['listStudio'][] = new Studio("std01", "Cirebon", "CGV", 100);
+        $_SESSION['listStudio'][] = new Studio("std01", "Cirebon", "CGV", 100, "StudioCirebon.webp");
         $_SESSION['isEdited']["std01"] = 0;
     }
 
@@ -47,7 +47,7 @@
             }
             if(!$_SESSION['alertKode']){ // jika kode adalah kode baru
                 // instansiasi object dan masukkan ke list
-                $_SESSION['listStudio'][] = new Studio($kode, $lokasi, $jaringan, $kapasitas);
+                $_SESSION['listStudio'][] = new Studio($kode, $lokasi, $jaringan, $kapasitas, "");
                 $_SESSION['isEdited'][$kode] = 0; // set isEdited menjadi false
             }
         }else if($button == 'editBtn'){ // jika button edit
@@ -108,6 +108,7 @@
                                 <th>Jaringan</th>
                                 <th>Kapasitas</th>
                                 <th colspan="2">Aksi</th>
+                                <th>Gambar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -133,6 +134,7 @@
                                             echo "<td><button type=\"submit\" name=\"inibtn\" value=\"editBtn\">Edit</button></td>"; // button Edit
                                         }
                                         echo "<td><button type=\"submit\" name=\"inibtn\" value=\"delBtn\">Hapus</button></td>"; // button Hapus
+                                        echo "<td><img src=".$data->getImage()." width=\"100\"></img></td>";
                                         echo "</tr>";
                                         echo "</form>";
                                     }
