@@ -10,6 +10,7 @@ Program ini memiliki class berupa Studio yaitu class sebuah ruangan bioskop yang
 2. Lokasi (string) -> lokasi ruangan bioskop berada. Kota/Mall
 3. Jaringan (string) -> jaringan bioskop (CGV, XXI, Cinepolis, dsb.)
 4. Kapasitas (int) -> kapasitas kursi ruangan bioskop
+
 Masing-masing attribut memiliki method getter dan setternya.
 
 ## Alur Program
