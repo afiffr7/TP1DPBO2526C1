@@ -159,8 +159,10 @@
 ![alt text](dokumentasi/python/PythonDataTidakDitemukan.png)
 
 3.List data kosong
+
 ![alt text](dokumentasi/python/PythonListKosong.png)
 
 4.Kapasitas bukan bilangan bulat
+
 ![alt text](dokumentasi/python/PythonErrorHandleKapasitasHarusBulat.png)
 
